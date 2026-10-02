@@ -68,21 +68,6 @@ if uploaded_file is not None:
         else:
             st.warning("O arquivo não possui colunas numéricas.")
 
-    elif tipo_grafico == "Boxplot (Dispersão/Outliers)":
-        if colunas_numericas:
-            col_num = st.selectbox("Selecione a coluna numérica:", colunas_numericas)
-            col_cat = st.selectbox("Agrupar por categoria (opcional):", [None] + colunas_texto)
-            fig = gerar_grafico_boxplot(df, col_num, col_cat, paleta=paleta_cores)
-
-    elif tipo_grafico == "Scatter Plot (Dispersão 2D)":
-        if len(colunas_numericas) >= 2:
-            col_x = st.selectbox("Eixo X (Numérica):", colunas_numericas, index=0)
-            col_y = st.selectbox("Eixo Y (Numérica):", colunas_numericas, index=1 if len(colunas_numericas) > 1 else 0)
-            col_cor = st.selectbox("Colorir por categoria (opcional):", [None] + colunas_texto)
-            fig = gerar_grafico_dispersao(df, col_x, col_y, col_cor, paleta=paleta_cores)
-        else:
-            st.warning("São necessárias pelo menos 2 colunas numéricas para o Scatter Plot.")
-
     # --- EXIBIÇÃO CENTRALIZADA DO GRÁFICO ---
     if fig is not None:
         # Cria 3 colunas: a central ([1, 3, 1]) ocupa o centro da tela
