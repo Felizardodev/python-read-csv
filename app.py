@@ -5,9 +5,7 @@ from leitor import (
     aplicar_estilo_grafico,
     gerar_grafico_barras,
     gerar_grafico_pizza,
-    gerar_grafico_hist,
-    gerar_grafico_boxplot,
-    gerar_grafico_dispersao
+    gerar_grafico_hist
 )
 
 st.set_page_config(page_title="Dashboard CSV com Múltiplos Estilos", layout="wide")
