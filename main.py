@@ -1,6 +1,6 @@
 import pandas as pd
 
-# Substitua pelo nome do seu ficheiro CSV
+# Substituir pelo nome do ficheiro CSV
 caminho_csv = 'dados.csv'
 
 try:
