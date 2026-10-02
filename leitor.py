@@ -1,3 +1,4 @@
+import io
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -44,3 +45,10 @@ def gerar_grafico_hist(df, coluna_num, paleta="magma"):
     ax.set_ylabel("Frequência")
     plt.tight_layout()
     return fig
+
+def converter_figura_para_bytes(fig):
+    """Converte a figura Matplotlib para bytes para exibição no Streamlit."""
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png', bbox_inches='tight')
+    buf.seek(0)
+    return buf

@@ -5,7 +5,8 @@ from leitor import (
     aplicar_estilo_grafico,
     gerar_grafico_barras,
     gerar_grafico_pizza,
-    gerar_grafico_hist
+    gerar_grafico_hist,
+    converter_figura_para_bytes
 )
 
 st.set_page_config(page_title="Dashboard CSV com Múltiplos Estilos", layout="wide")
@@ -66,12 +67,22 @@ if uploaded_file is not None:
         else:
             st.warning("O arquivo não possui colunas numéricas.")
 
-    # --- EXIBIÇÃO CENTRALIZADA DO GRÁFICO ---
+    # --- EXIBIÇÃO CENTRALIZADA DO GRÁFICO E BOTÃO DE DOWNLOAD ---
     if fig is not None:
-        # Cria 3 colunas: a central ([1, 3, 1]) ocupa o centro da tela
         col_esq, col_centro, col_dir = st.columns([1, 3, 1])
         with col_centro:
             st.pyplot(fig)
+            
+            # Prepara a imagem em bytes para download
+            imagem_bytes = converter_figura_para_bytes(fig)
+            
+            st.download_button(
+                label="📥 Baixar Gráfico (PNG)",
+                data=imagem_bytes,
+                file_name="grafico_personalizado.png",
+                mime="image/png",
+                use_container_width=True
+            )
 
 else:
     st.info("Aguardando upload do arquivo CSV.")
