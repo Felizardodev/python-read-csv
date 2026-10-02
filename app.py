@@ -45,7 +45,7 @@ if uploaded_file is not None:
 
     tipo_grafico = st.selectbox(
         "Selecione o Tipo de Gráfico:",
-        ["Gráfico de Barras", "Gráfico de Pizza / Setores", "Histograma (Distribuição)", "Boxplot (Dispersão/Outliers)", "Scatter Plot (Dispersão 2D)"]
+        ["Gráfico de Barras", "Gráfico de Pizza / Setores", "Histograma (Distribuição)"]
     )
 
     fig = None

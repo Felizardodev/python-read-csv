@@ -44,21 +44,3 @@ def gerar_grafico_hist(df, coluna_num, paleta="magma"):
     ax.set_ylabel("Frequência")
     plt.tight_layout()
     return fig
-
-def gerar_grafico_boxplot(df, coluna_num, coluna_cat=None, paleta="Set2"):
-    fig, ax = plt.subplots(figsize=(7, 4.5))
-    if coluna_cat:
-        sns.boxplot(data=df, x=coluna_cat, y=coluna_num, ax=ax, palette=paleta, hue=coluna_cat, legend=False)
-        plt.xticks(rotation=45)
-    else:
-        sns.boxplot(y=df[coluna_num], ax=ax, color=sns.color_palette(paleta)[0])
-    ax.set_title(f"Boxplot de {coluna_num}" + (f" por {coluna_cat}" if coluna_cat else ""), fontsize=12, fontweight='bold')
-    plt.tight_layout()
-    return fig
-
-def gerar_grafico_dispersao(df, col_x, col_y, col_cor=None, paleta="tab10"):
-    fig, ax = plt.subplots(figsize=(7, 4.5))
-    sns.scatterplot(data=df, x=col_x, y=col_y, hue=col_cor, ax=ax, palette=paleta if col_cor else None, s=100)
-    ax.set_title(f"Relação: {col_x} vs {col_y}", fontsize=12, fontweight='bold')
-    plt.tight_layout()
-    return fig
